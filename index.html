@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Javascript Injection</title>
+    </head>
+    <body style="background-color: #121212;">
+    <center>
+      <form autocomplete="off">
+          <input id="qi" type="text" name="query" />
+          <button type="submit">Поиск</button>
+      </form>
+      <h3 style="color: whitesmoke; font-family: Arial;">Вы ищете: <span id="qo" class="query" style="font-family: cursive;"></span></h3>
+    </center>
+    <script>
+        if (document.readyState == 'loading') {
+            document.addEventListener('DOMContentLoaded', gg)
+        } else {
+            gg()
+        }
+
+        function gg() {
+            var query = new URL(window.location).searchParams.get('query')
+            document.getElementById('qi').value = query
+            document.getElementById('qo').innerHTML = query
+        }
+    </script>
+    </body>
+</html>
